@@ -3814,6 +3814,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "roverlay"
+version = "0.1.0"
+dependencies = [
+ "slint",
+ "slint-build",
+ "sysinfo",
+]
+
+[[package]]
 name = "rowan"
 version = "0.16.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4162,15 +4171,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "spin_on",
-]
-
-[[package]]
-name = "slint-rust-template"
-version = "0.1.0"
-dependencies = [
- "slint",
- "slint-build",
- "sysinfo",
 ]
 
 [[package]]

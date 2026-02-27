@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Roverlay
+Comment=CPU and RAM usage overlay
+Exec=roverlay
+Icon=slint-rust-template
+Terminal=false
+Categories=Utility;System;

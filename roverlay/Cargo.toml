@@ -1,5 +1,5 @@
 [package]
-name = "slint-rust-template"
+name = "roverlay"
 version = "0.1.0"
 edition = "2021"
 
@@ -11,3 +11,7 @@ sysinfo = "0.30"
 
 [build-dependencies]
 slint-build = "1.14.1"
+
+[package.metadata.appimage]
+icon = "slint-rust-template.svg"
+desktop_file = "slint-rust-template.desktop"
