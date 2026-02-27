@@ -1,0 +1,73 @@
+struct CoreInfo {
+    label: string,
+    value: float,
+}
+
+export component MainWindow inherits Window {
+    callback move-window(length, length);
+    
+    in property <string> used-memory;
+    in property <string> total-memory;
+    in property <string> cpu-num;
+    in property <[CoreInfo]> core-data;
+
+    always-on-top: true;
+    no-frame: true;
+    background: #1a1a1a00;
+    default-font-family: "mono";
+    width: 400px;
+    height: 400px;
+
+    Rectangle {
+        background: #1a1a1ae6;
+        border-radius: 30px;
+        
+        TouchArea {
+            moved => {
+                if (self.pressed) {
+                    root.move-window(self.mouse-x - self.pressed-x, self.mouse-y - self.pressed-y);
+                }
+            }
+        }
+    }
+
+    VerticalLayout {
+        padding: 20px;
+        spacing: 10px;
+        alignment: start;
+
+        VerticalLayout {
+            Text { text: total-memory; color: white; font-size: 25px; }
+            Text { text: used-memory; color: white; font-size: 18px; }
+            Text { text: cpu-num; color: #aaa; font-size: 14px; }
+        }
+
+        Rectangle { height: 1px; background: #333; }
+
+        GridLayout {
+            spacing: 15px;
+            for core[i] in core-data : VerticalLayout {
+                row: floor(i / 2);
+                col: mod(i, 2);
+                spacing: 4px;
+                Text {
+                    text: core.label;
+                    font-size: 14px;
+                    color: white;
+                }
+                Rectangle {
+                    height: 6px;
+                    background: #333;
+                    border-radius: 3px;
+                    Rectangle {
+                        width: parent.width * core.value;
+                        height: parent.height;
+                        background: #ffffff;
+                        border-radius: 3px;
+                        x: 0;
+                    }
+                }
+            }
+        }
+    }
+}
